@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌷 Page Suivante 🌷</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🌷 Page Suivante 🌷</h1>
+    <p class="sous-titre">Ton petit coin doux pour tourner la page, à ton rythme.</p>
+    <div class="bulle" id="affirmation">Tu es plus fort(e) que tu ne le crois 💪</div><br>
+    <button class="btn petit" id="btn-affirmation">Une autre petite phrase 💌</button>
+  </header>
+
+  <nav id="menu">
+    <button class="onglet-btn actif" data-cible="compteur">📅 Compteur</button>
+    <button class="onglet-btn" data-cible="lettre">🔥 Lettre</button>
+    <button class="onglet-btn" data-cible="listes">📝 Listes</button>
+    <button class="onglet-btn" data-cible="sos">🆘 SOS</button>
+    <button class="onglet-btn" data-cible="defis">🌱 Défis</button>
+    <button class="onglet-btn" data-cible="humeur">😊 Humeur</button>
+  </nav>
+
+  <main>
+
+    <!-- ========== COMPTEUR ========== -->
+    <section id="compteur" class="onglet actif">
+      <div class="panneau">
+        <h2>📅 Jours de liberté</h2>
+
+        <div id="form-debut">
+          <p>Depuis quand as-tu coupé les ponts ?</p>
+          <input type="date" id="date-debut">
+          <br>
+          <button class="btn" id="btn-debut">C'est parti ! 🚀</button>
+        </div>
+
+        <div id="affichage-compteur" class="cache">
+          <div class="gros-nombre"><span id="jours">0</span></div>
+          <p class="legende">jours de liberté 🕊️ (soit <strong id="heures">0</strong> heures)</p>
+          <p class="message-compteur" id="message-compteur"></p>
+
+          <h3>🏅 Tes médailles</h3>
+          <div class="badges" id="badges"></div>
+
+          <button class="btn clair petit" id="btn-reset">Changer la date 🔄</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LETTRE ========== -->
+    <section id="lettre" class="onglet">
+      <div class="panneau">
+        <h2>🔥 La lettre qu'on n'envoie jamais</h2>
+        <p>Écris tout ce que tu as sur le cœur : la colère, la tristesse, les « pourquoi ». Puis brûle-la. Rien n'est enregistré, rien n'est envoyé.</p>
+        <textarea id="texte-lettre" rows="9" placeholder="Cher(e) ex..."></textarea>
+        <button class="btn" id="btn-bruler">Brûler la lettre 🔥</button>
+        <p class="message-compteur" id="message-lettre"></p>
+      </div>
+    </section>
+
+    <!-- ========== LISTES ========== -->
+    <section id="listes" class="onglet">
+      <div class="deux-colonnes">
+        <div class="panneau">
+          <h2>🚩 Ce qui n'allait pas</h2>
+          <p class="note">Pour te rappeler pourquoi c'est fini, les jours de nostalgie.</p>
+          <div class="ajout">
+            <input id="in-rouge" placeholder="Ex : il/elle ne répondait jamais..." maxlength="80">
+            <button class="btn petit" id="bt-rouge">＋</button>
+          </div>
+          <ul class="liste" id="ul-rouge"></ul>
+        </div>
+
+        <div class="panneau">
+          <h2>💎 Ce que je retrouve</h2>
+          <p class="note">Les petites choses qui reviennent dans ta vie.</p>
+          <div class="ajout">
+            <input id="in-vert" placeholder="Ex : sortir avec mes amis..." maxlength="80">
+            <button class="btn petit" id="bt-vert">＋</button>
+          </div>
+          <ul class="liste" id="ul-vert"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SOS ========== -->
+    <section id="sos" class="onglet">
+      <div class="panneau">
+        <h2>🆘 J'ai envie de lui écrire</h2>
+        <p>Respire d'abord. L'envie monte, atteint un pic, puis redescend. Laisse-lui quelques minutes.</p>
+
+        <div class="respiration">
+          <div id="cercle">🌸</div>
+        </div>
+        <p class="consigne-respi" id="consigne-respi">Clique sur le bouton pour respirer en rythme</p>
+        <button class="btn" id="btn-respi">Respirer 🌬️</button>
+      </div>
+
+      <div class="deux-colonnes">
+        <div class="panneau">
+          <h3>🤔 Avant d'envoyer un message</h3>
+          <ul class="questions">
+            <li>Qu'est-ce que j'espère vraiment obtenir ?</li>
+            <li>Est-ce que je me sentirai mieux demain ?</li>
+            <li>Que dirait ma meilleure amie / mon meilleur ami ?</li>
+            <li>Ai-je écrit la lettre à brûler d'abord ?</li>
+            <li>Puis-je attendre 24 h ? Juste 24 h.</li>
+          </ul>
+        </div>
+
+        <div class="panneau">
+          <h3>🎲 Fais ça à la place</h3>
+          <div class="idee" id="idee">Appuie sur le bouton pour une idée !</div>
+          <button class="btn petit" id="btn-idee">Une idée 🎲</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DÉFIS ========== -->
+    <section id="defis" class="onglet">
+      <div class="panneau">
+        <h2>🌱 21 petits défis pour avancer</h2>
+        <div class="barre"><div id="barre-defis"></div></div>
+        <p class="legende" id="texte-defis">0 / 21</p>
+        <ul class="defis" id="liste-defis"></ul>
+        <button class="btn clair petit" id="btn-reset-defis">Tout remettre à zéro 🔄</button>
+      </div>
+    </section>
+
+    <!-- ========== HUMEUR ========== -->
+    <section id="humeur" class="onglet">
+      <div class="panneau">
+        <h2>😊 Ma météo intérieure</h2>
+        <p>Comment tu te sens aujourd'hui ?</p>
+        <div class="emojis" id="emojis">
+          <button data-v="1" title="Très mal">😭</button>
+          <button data-v="2" title="Triste">😔</button>
+          <button data-v="3" title="Bof">😐</button>
+          <button data-v="4" title="Bien">🙂</button>
+          <button data-v="5" title="Au top">🤩</button>
+        </div>
+        <p class="message-compteur" id="message-humeur"></p>
+
+        <h3>📈 Les 7 derniers jours</h3>
+        <div class="histo" id="histo"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Fait avec 💗 pour les cœurs en réparation.</p>
+    <p class="aide">💌 Si ta tristesse devient trop lourde, parles-en à un(e) proche ou à un(e) professionnel(le). En France, le <strong>3114</strong> est joignable 24 h/24, gratuitement.</p>
+  </footer>
+
+  <script>
+    /* ===================================================================
+       OUTILS
+       =================================================================== */
+    const $ = (id) => document.getElementById(id);
+
+    function lire(cle, defaut) {
+      try {
+        const v = localStorage.getItem(cle);
+        return v ? JSON.parse(v) : defaut;
+      } catch (e) { return defaut; }
+    }
+    function ecrire(cle, val) {
+      try { localStorage.setItem(cle, JSON.stringify(val)); } catch (e) {}
+    }
+    function pad(n) { return String(n).padStart(2, "0"); }
+    function cleDate(d) {
+      return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+    }
+
+    function confettis(symboles, n) {
+      for (let i = 0; i < n; i++) {
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.textContent = symboles[Math.floor(Math.random() * symboles.length)];
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.fontSize = 1.3 + Math.random() * 1.7 + "rem";
+        c.style.animationDuration = 3 + Math.random() * 3 + "s";
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 6500);
+      }
+    }
+    const DOUX = ["💖", "🌸", "✨", "🦋", "🌷", "⭐", "🕊️"];
+
+    /* ===================================================================
+       AFFIRMATIONS
+       =================================================================== */
+    const AFFIRMATIONS = [
+      "Tu es plus fort(e) que tu ne le crois 💪",
+      "Chaque jour qui passe te rapproche de toi-même 🌅",
+      "Tu mérites quelqu'un qui te choisit tous les jours 💖",
+      "Ce n'est pas la fin de ton histoire, juste d'un chapitre 📖",
+      "Pleurer, c'est aussi guérir 🌧️➜🌈",
+      "Tu n'as pas à tout comprendre aujourd'hui, juste à avancer un peu 🐢",
+      "Ton cœur est en train de se réparer, laisse-lui du temps 🧵",
+      "Tu es entier(e) tout(e) seul(e) 🌟",
+      "Ce que tu ressens est normal, et ça passera 🌈",
+      "Prends soin de toi comme tu prendrais soin de ta meilleure amie 🫶",
+      "Un pas minuscule reste un pas ✨",
+      "Tu as survécu à 100 % de tes pires jours 🏆",
+    ];
+    function nouvelleAffirmation() {
+      $("affirmation").textContent = AFFIRMATIONS[Math.floor(Math.random() * AFFIRMATIONS.length)];
+    }
+    $("btn-affirmation").addEventListener("click", () => {
+      nouvelleAffirmation();
+      confettis(DOUX, 8);
+    });
+    nouvelleAffirmation();
+
+    /* ===================================================================
+       ONGLETS
+       =================================================================== */
+    document.querySelectorAll(".onglet-btn").forEach((b) => {
+      b.addEventListener("click", () => {
+        document.querySelectorAll(".onglet-btn").forEach((x) => x.classList.remove("actif"));
+        document.querySelectorAll(".onglet").forEach((x) => x.classList.remove("actif"));
+        b.classList.add("actif");
+        $(b.dataset.cible).classList.add("actif");
+        if (b.dataset.cible !== "sos") arreterRespiration();
+      });
+    });
+
+    /* ===================================================================
+       COMPTEUR
+       =================================================================== */
+    const MEDAILLES = [
+      [1, "🌱", "1 jour"], [3, "🌿", "3 jours"], [7, "🌸", "1 semaine"],
+      [14, "🦋", "2 semaines"], [30, "🌟", "1 mois"], [60, "🌈", "2 mois"],
+      [100, "👑", "100 jours"], [365, "🏆", "1 an"],
+    ];
+    let debut = lire("exDebut", null);
+
+    $("date-debut").value = cleDate(new Date());
+
+    function messageJours(j) {
+      if (j < 1) return "Le plus dur, c'est de commencer. Tu es là, et c'est déjà beau 💕";
+      if (j < 3) return "Les premiers jours sont les plus difficiles. Sois très doux(ce) avec toi 🫂";
+      if (j < 7) return "Tu tiens bon ! Chaque jour compte, même ceux où tu doutes 🌼";
+      if (j < 14) return "Une semaine ! Ton cœur commence à respirer à nouveau 🌬️";
+      if (j < 30) return "Tu reprends des forces, ça se voit 💪";
+      if (j < 100) return "Plus d'un mois de liberté : tu as repris le contrôle 🌟";
+      return "Tu as complètement tourné la page. Quelle fierté ! 👑";
+    }
+
+    function majCompteur() {
+      if (!debut) {
+        $("form-debut").classList.remove("cache");
+        $("affichage-compteur").classList.add("cache");
+        return;
+      }
+      $("form-debut").classList.add("cache");
+      $("affichage-compteur").classList.remove("cache");
+
+      const ms = Date.now() - new Date(debut + "T00:00:00").getTime();
+      const jours = Math.max(0, Math.floor(ms / 86400000));
+      const heures = Math.max(0, Math.floor(ms / 3600000));
+
+      $("jours").textContent = jours;
+      $("heures").textContent = heures;
+      $("message-compteur").textContent = messageJours(jours);
+
+      const zone = $("badges");
+      zone.textContent = "";
+      MEDAILLES.forEach(([n, emoji, nom]) => {
+        const d = document.createElement("div");
+        d.className = "badge" + (jours >= n ? " debloque" : "");
+        const e = document.createElement("div");
+        e.className = "emoji-badge";
+        e.textContent = jours >= n ? emoji : "🔒";
+        d.appendChild(e);
+        d.appendChild(document.createTextNode(nom));
+        zone.appendChild(d);
+      });
+    }
+
+    $("btn-debut").addEventListener("click", () => {
+      const v = $("date-debut").value;
+      if (!v) return;
+      debut = v;
+      ecrire("exDebut", debut);
+      majCompteur();
+      confettis(DOUX, 25);
+    });
+    $("btn-reset").addEventListener("click", () => {
+      debut = null;
+      try { localStorage.removeItem("exDebut"); } catch (e) {}
+      majCompteur();
+    });
+    majCompteur();
+    setInterval(majCompteur, 60000);
+
+    /* ===================================================================
+       LETTRE À BRÛLER
+       =================================================================== */
+    $("btn-bruler").addEventListener("click", () => {
+      const zone = $("texte-lettre");
+      const msg = $("message-lettre");
+      if (!zone.value.trim()) {
+        msg.textContent = "Écris d'abord ce que tu as sur le cœur 💌";
+        return;
+      }
+      msg.textContent = "";
+      zone.classList.add("brule");
+      $("btn-bruler").disabled = true;
+      confettis(["🔥", "🔥", "💨", "✨"], 30);
+      setTimeout(() => {
+        zone.value = "";
+        zone.classList.remove("brule");
+        $("btn-bruler").disabled = false;
+        msg.textContent = "Parti en fumée 🌫️ Respire un grand coup. Tu te sens un peu plus léger(e) ?";
+      }, 2400);
+    });
+
+    /* ===================================================================
+       LISTES
+       =================================================================== */
+    function creerListe(champ, bouton, ul, cle) {
+      let items = lire(cle, []);
+
+      function afficher() {
+        const zone = $(ul);
+        zone.textContent = "";
+        items.forEach((texte, i) => {
+          const li = document.createElement("li");
+          const span = document.createElement("span");
+          span.textContent = texte;
+          const x = document.createElement("button");
+          x.textContent = "✕";
+          x.title = "Supprimer";
+          x.addEventListener("click", () => {
+            items.splice(i, 1);
+            ecrire(cle, items);
+            afficher();
+          });
+          li.appendChild(span);
+          li.appendChild(x);
+          zone.appendChild(li);
+        });
+      }
+      function ajouter() {
+        const v = $(champ).value.trim();
+        if (!v) return;
+        items.unshift(v);
+        items = items.slice(0, 40);
+        ecrire(cle, items);
+        $(champ).value = "";
+        afficher();
+      }
+      $(bouton).addEventListener("click", ajouter);
+      $(champ).addEventListener("keydown", (e) => { if (e.key === "Enter") ajouter(); });
+      afficher();
+    }
+    creerListe("in-rouge", "bt-rouge", "ul-rouge", "exRouge");
+    creerListe("in-vert", "bt-vert", "ul-vert", "exVert");
+
+    /* ===================================================================
+       SOS : RESPIRATION + IDÉES
+       =================================================================== */
+    const PHASES = [
+      ["Inspire doucement… 🌬️", "scale(1.55)"],
+      ["Retiens… ✨", "scale(1.55)"],
+      ["Expire lentement… 💨", "scale(1)"],
+    ];
+    let respi = null;
+    let phase = 0;
+    let cycles = 0;
+
+    function etapeRespiration() {
+      $("consigne-respi").textContent = PHASES[phase][0];
+      $("cercle").style.transform = PHASES[phase][1];
+      phase++;
+      if (phase >= PHASES.length) {
+        phase = 0;
+        cycles++;
+      }
+    }
+    function arreterRespiration() {
+      if (respi) {
+        clearInterval(respi);
+        respi = null;
+        $("cercle").style.transform = "scale(1)";
+        $("btn-respi").textContent = "Respirer 🌬️";
+        if (cycles > 0) {
+          $("consigne-respi").textContent = "Bravo, " + cycles + " cycle(s) de respiration 🌸";
+        } else {
+          $("consigne-respi").textContent = "Clique sur le bouton pour respirer en rythme";
+        }
+      }
+    }
+    $("btn-respi").addEventListener("click", () => {
+      if (respi) { arreterRespiration(); return; }
+      phase = 0;
+      cycles = 0;
+      $("btn-respi").textContent = "Arrêter ⏹️";
+      etapeRespiration();
+      respi = setInterval(etapeRespiration, 4000);
+    });
+
+    const IDEES = [
+      "Appelle une amie ou un ami, même juste pour dire bonjour 📞",
+      "Va marcher 15 minutes dehors, sans écouteurs 🚶",
+      "Prends une douche chaude et mets ta musique préférée 🚿",
+      "Prépare ton plat préféré 🍝",
+      "Range un tiroir ou une étagère, ça vide aussi la tête 🧺",
+      "Regarde une comédie qui te fait rire 🎬",
+      "Écris trois choses pour lesquelles tu es reconnaissant(e) 📓",
+      "Danse sur trois chansons d'affilée 💃",
+      "Change la déco de ta chambre : bouge un meuble ou un poster 🪴",
+      "Dessine, colorie ou fais un collage sans te juger 🎨",
+      "Fais un peu de sport ou d'étirements 🧘",
+      "Envoie un message gentil à quelqu'un d'autre 💌",
+      "Mets ton téléphone en mode avion pendant une heure ✈️",
+      "Dors tôt ce soir, ton cœur récupère aussi pendant la nuit 😴",
+    ];
+    $("btn-idee").addEventListener("click", () => {
+      $("idee").textContent = IDEES[Math.floor(Math.random() * IDEES.length)];
+    });
+
+    /* ===================================================================
+       DÉFIS
+       =================================================================== */
+    const DEFIS = [
+      "Mets ton téléphone en silencieux pendant 1 h",
+      "Écris la lettre à brûler",
+      "Bois un grand verre d'eau et mange un vrai repas",
+      "Fais une promenade de 20 minutes",
+      "Appelle quelqu'un qui te fait du bien",
+      "Cache ou archive les photos qui te font mal",
+      "Fais une playlist qui te donne la pêche",
+      "Écris 3 choses que tu aimes chez toi",
+      "Range ou donne un objet qui te rappelle ton ex",
+      "Fais une activité que tu ne faisais plus",
+      "Dors 8 heures cette nuit",
+      "Fais-toi un petit cadeau",
+      "Sors voir des amis, même une heure",
+      "Fais une journée sans regarder ses réseaux",
+      "Teste une nouvelle recette ou un nouveau café",
+      "Fais du sport, même 10 minutes",
+      "Écris la liste de tes rêves pour cette année",
+      "Fais une séance de ménage ou de déco",
+      "Dis non à quelque chose qui ne te plaît pas",
+      "Remercie quelqu'un qui t'a soutenu(e)",
+      "Écris-toi une lettre d'encouragement pour dans 1 mois",
+    ];
+    let faits = lire("exDefis", []);
+    if (!Array.isArray(faits) || faits.length !== DEFIS.length) faits = DEFIS.map(() => false);
+
+    function afficherDefis() {
+      const ul = $("liste-defis");
+      ul.textContent = "";
+      DEFIS.forEach((texte, i) => {
+        const li = document.createElement("li");
+        li.className = faits[i] ? "fait" : "";
+        const label = document.createElement("label");
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = faits[i];
+        cb.addEventListener("change", () => {
+          faits[i] = cb.checked;
+          ecrire("exDefis", faits);
+          if (cb.checked) confettis(DOUX, 6);
+          afficherDefis();
+        });
+        label.appendChild(cb);
+        label.appendChild(document.createTextNode(" " + texte));
+        li.appendChild(label);
+        ul.appendChild(li);
+      });
+      const nb = faits.filter(Boolean).length;
+      $("barre-defis").style.width = (nb / DEFIS.length) * 100 + "%";
+      $("texte-defis").textContent = nb + " / " + DEFIS.length + (nb === DEFIS.length ? " 🎉 Tout est fait, bravo !" : "");
+    }
+    $("btn-reset-defis").addEventListener("click", () => {
+      faits = DEFIS.map(() => false);
+      ecrire("exDefis", faits);
+      afficherDefis();
+    });
+    afficherDefis();
+
+    /* ===================================================================
+       HUMEUR
+       =================================================================== */
+    const FACES = { 1: "😭", 2: "😔", 3: "😐", 4: "🙂", 5: "🤩" };
+    const MSG_HUMEUR = {
+      1: "Les jours sombres existent, et ils passent. Tu n'es pas seul(e) : appelle quelqu'un si tu en as besoin 🫂",
+      2: "C'est ok d'être triste. Offre-toi quelque chose de doux aujourd'hui 🍵",
+      3: "Une journée « bof » est une journée normale. Tu avances quand même 🌤️",
+      4: "Super ! Profite de cette belle énergie 🌸",
+      5: "Waouh, quelle belle journée ! Savoure ça ✨",
+    };
+    let humeurs = lire("exHumeurs", {});
+
+    function afficherHumeur() {
+      const zone = $("histo");
+      zone.textContent = "";
+      for (let i = 6; i >= 0; i--) {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        const v = humeurs[cleDate(d)];
+
+        const col = document.createElement("div");
+        col.className = "col";
+        const emoji = document.createElement("div");
+        emoji.className = "col-emoji";
+        emoji.textContent = v ? FACES[v] : "·";
+        const barre = document.createElement("div");
+        barre.className = "col-barre";
+        barre.style.height = v ? v * 18 + "px" : "4px";
+        const jour = document.createElement("div");
+        jour.className = "col-jour";
+        jour.textContent = d.toLocaleDateString("fr-FR", { weekday: "short" });
+        col.appendChild(emoji);
+        col.appendChild(barre);
+        col.appendChild(jour);
+        zone.appendChild(col);
+      }
+      const auj = humeurs[cleDate(new Date())];
+      document.querySelectorAll("#emojis button").forEach((b) => {
+        b.classList.toggle("choisi", parseInt(b.dataset.v, 10) === auj);
+      });
+      $("message-humeur").textContent = auj ? MSG_HUMEUR[auj] : "";
+    }
+    document.querySelectorAll("#emojis button").forEach((b) => {
+      b.addEventListener("click", () => {
+        humeurs[cleDate(new Date())] = parseInt(b.dataset.v, 10);
+        ecrire("exHumeurs", humeurs);
+        afficherHumeur();
+        if (parseInt(b.dataset.v, 10) >= 4) confettis(DOUX, 12);
+      });
+    });
+    afficherHumeur();
+  </script>
+</body>
+</html>
